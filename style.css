@@ -1,0 +1,101 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+.container {
+    width: 600px;
+    height: 600px;
+    border: 5px solid;
+    border-radius: 20px;
+    margin: 50px auto;
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.esq {
+    width: 200px;
+    height: 200px;
+    background-color: blue;
+    margin: 30px auto;
+    border: 5px solid;
+    border-radius: 100%;
+    cursor: pointer;
+}
+
+.esq1 {
+    background-color: red;
+}
+
+/* .esq1:hover {
+    box-shadow: 0px 0px 20px 14px red;
+} */
+
+.esq2 {
+    background-color: yellow;
+}
+
+/* .esq2:hover {
+    box-shadow: 0px 0px 20px 14px yellow;
+} */
+
+.esq3 {
+    background-color: blue;
+}
+
+/* .esq3:hover {
+    box-shadow: 0px 0px 20px 14px blue;
+} */
+
+.esq4 {
+    background-color: green;
+}
+
+/* .esq4:hover {
+    box-shadow: 0px 0px 20px 14px green;
+} */
+
+.start {
+    position: absolute;
+    width: 150px;
+    height: 50px;
+    background-color: black;
+    color: white;
+    top: 50%;
+    left: 50%;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    font-size: 20px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.start:hover {
+    color: rgba(255, 255, 255, 0.507);
+}
+.hide{
+    display: none;
+}
+
+.hoverRed {
+    box-shadow: 0px 0px 20px 14px red;
+}
+
+.hoverYellow {
+    box-shadow: 0px 0px 20px 14px yellow;
+}
+
+.hoverBlue {
+    box-shadow: 0px 0px 20px 14px blue;
+}
+
+.hoverGreen {
+    box-shadow: 0px 0px 20px 14px green;
+}
