@@ -1,4 +1,4 @@
-body {
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -14,6 +14,20 @@ body {
     position: relative;
     display: grid;
     grid-template-columns: 1fr 1fr;
+    /* z-index: 10; */
+}
+
+.cover::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px; /* Igual que el .container para que coincida */
+  background-color: rgba(0, 0, 0, .4); /* Cambia este color u opacidad según lo que quieras */
+  z-index: 100;
+  pointer-events: auto; /* Opcional: evita que bloquee clics si es solo decorativo */
 }
 
 .esq {
@@ -30,34 +44,17 @@ body {
     background-color: red;
 }
 
-/* .esq1:hover {
-    box-shadow: 0px 0px 20px 14px red;
-} */
-
 .esq2 {
     background-color: yellow;
 }
-
-/* .esq2:hover {
-    box-shadow: 0px 0px 20px 14px yellow;
-} */
 
 .esq3 {
     background-color: blue;
 }
 
-/* .esq3:hover {
-    box-shadow: 0px 0px 20px 14px blue;
-} */
-
 .esq4 {
     background-color: green;
 }
-
-/* .esq4:hover {
-    box-shadow: 0px 0px 20px 14px green;
-} */
-
 .start {
     position: absolute;
     width: 150px;
@@ -68,13 +65,35 @@ body {
     left: 50%;
     text-align: center;
     transform: translate(-50%, -50%);
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
     border-radius: 15px;
     font-size: 20px;
     cursor: pointer;
     user-select: none;
+    /* z-index: 200; */
+}
+.roundContainer{
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color: black;
+    color: white;
+    top: 50%;
+    left: 50%;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    cursor: pointer;
+    user-select: none;
+}
+.roundsNumber{
+    font-size:40px;
 }
 
 .start:hover {
@@ -82,6 +101,9 @@ body {
 }
 .hide{
     display: none;
+}
+.unhide{
+    display: flex;
 }
 
 .hoverRed {
@@ -99,3 +121,54 @@ body {
 .hoverGreen {
     box-shadow: 0px 0px 20px 14px green;
 }
+/** styles game over options**/
+
+.gameOverContainer{
+    margin: 0 auto 50px;
+    width: 50%;
+    justify-content: center;
+    gap: 50px;
+    align-items: baseline;
+}
+.msgGameOver{
+    font-size: 30px;
+}
+.btnTryAgain{
+    width: 190px;
+    height: 60px;
+    background-color: rgb(101, 217, 246);
+    border-radius: 15px;
+    font-size: 20px;
+    cursor: pointer;
+    user-select: none;
+}
+
+
+
+ /* .tooltip::after {
+  content: attr(suu);
+  position: absolute;
+  background-color: black;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+  font-size: 14px;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(5px); 
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease-in-out;
+  z-index: 10;
+}
+
+.tooltip:hover::after {
+  opacity: 1;
+}
+
+.tooltip {
+  position: relative;
+  cursor: pointer;
+  display: inline-block;
+} */

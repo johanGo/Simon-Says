@@ -1,28 +1,38 @@
-// let red=document.getElementsByClassName('esq1')
 let red = document.querySelector('.esq1')
 let yellow = document.querySelector('.esq2')
 let blue = document.querySelector('.esq3')
 let green = document.querySelector('.esq4')
 const startButton = document.querySelector('.start')
+const msgGameOver = document.querySelector('.gameOverContainer')
+let roundsNumber = document.querySelector('.roundsNumber')
+let roundContainer = document.querySelector('.roundContainer')
+let container = document.querySelector('.container')
+
 let queue = [];
 let selectable = [];
 let allColor = [red, yellow, blue, green]
 let time;
 let ran;
-let o = false;
+let rounds = 1;
+let o = 0;
+
+startButton.classList.add('unhide')
+msgGameOver.classList.add('hide')
+roundContainer.classList.add('hide')
+
+//Game starts when clicking in the button 'Empezar'
 startButton.addEventListener('click', () => {
-    // startButton.classList.add('hide')
-    // debugger;
+    // debugger
+    o = 0;
+    container.classList.remove('cover')
+    startButton.classList.remove('unhide')
+    startButton.classList.add('hide')
+    roundContainer.classList.add('unhide')
+
+    //Choose the random color in the first time
     ran = allColor[Math.floor(Math.random() * 4)]
-    // selectable.push(ran)
-    // if (!o) {
-    //     selectable.shift()
-    //     console.log('Esto se debe ejecutar solo una vez')
-    //     o = true
-    // }
     queue.push(ran)
-    console.log(ran)
-    console.log(ran.className)
+    // console.log(ran)
 
     time = setTimeout(turnOnOf, 400, 'add', ran);
 
@@ -30,109 +40,53 @@ startButton.addEventListener('click', () => {
     console.log(queue)
 
     red.addEventListener('click', () => {
-        // console.log(red.contains(queue[0]))
-        // if (red.contains(queue[0])) {
-        //     myfuntion(red);
-        // }
         myfuntion(red);
-
     })
     yellow.addEventListener('click', () => {
-        // console.log(yellow.contains(queue[0]))
-        // if (yellow.contains(queue[0])) {
-        //     myfuntion(yellow);
-        // }
         myfuntion(yellow);
-
     })
     blue.addEventListener('click', () => {
-        // console.log(blue.contains(queue[0]))
-        // if (blue.contains(queue[0])) {
-        //     myfuntion(blue);
-        // }
         myfuntion(blue);
-
     })
     green.addEventListener('click', () => {
-        // console.log(green.contains(queue[0]))
-        // if (green.contains(queue[0])) {
-        //     myfuntion(green);
-        // }
         myfuntion(green);
-
     })
-
 })
+
 function myfuntion(pressedColor) {
-    // if (queue[0].contains(queue[0])) {
-    //     console.log('---------------------------------------')
-    //     ran = allColor[Math.floor(Math.random() * 4)]
-    //     console.table([{ NuevoValor: ran }]);
-    //     queue.push(ran)
-    //     console.log(queue)
-    // }
-
-    // console.log('---------------------------------------')
-    // ran = allColor[Math.floor(Math.random() * 4)]
-    // console.table([{ NuevoValor: ran }]);
-    // queue.push(ran)
-
+    // debugger;
     console.log('Color presionado', pressedColor)
     console.log(queue)
-    // selectable.push(pressedColor)
-    // if (!o) {
-    //     selectable.shift()
-    //     console.log('Esto se debe ejecutar solo una vez')
-    //     o = true
-    // }
-    // // selectable.push(pressedColor)
     selectable.push(pressedColor)
-
     console.log(selectable)
-    // if(queue.length == 2){
-    //     selectable.shift()
-    //     console.log('Esto se debe ejecutar solo una vez')
-    // }
-
-    if (selectable.length == queue.length) {
-        if (JSON.stringify(selectable) === JSON.stringify(queue)) {
+    debugger;
+    // for (let i in queue) {
+    if (selectable[o].classList[1] == queue[o].classList[1]) {
+        if (selectable.length == queue.length) {
             console.log('---------------------------------------')
             ran = allColor[Math.floor(Math.random() * 4)]
             console.table([{ NuevoValor: ran }]);
             queue.push(ran)
-            console.log(queue)
-            ejecutarConRetraso();
-            selectable=[]
+            // console.log(queue)
+            selectable = [];
+            roundsNumber.innerText++;
+            o = 0
+            turnLights();
+            // rounds++;
+            // console.log(rounds)
         } else {
-            console.log('La secuecia no es igual, perdiste')
+            console.log('Dale otra vez');
+            console.log(selectable);
+            o++
+            // console.log(parseInt(roundsNumber.innerText)-1)
+            // break;
         }
     } else {
-        console.log('Dale otra vez');
-        console.log(selectable);
+        console.log('La secuecia no es igual, perdiste')
+        showGameOverbtn()
     }
-    // let i=0;
-    // for (let i = 0; i < selectable.length; i++) {
-    //     if (selectable[i] == queue[i]) {
-    //         console.log('Es igual')
-    //         if (selectable.length == queue.length) {
-    //             ejecutarConRetraso();
-    //         }
-    //     } else {
-    //         console.log('No es same')
-    //     }
     // }
-    // for (let selec in selectable) {
-    //     if(selectable[selec]==queue[selec+1]){
-    //         console.log(selectable[selec])
-    //     }else{
-    //         console.log(selectable[selec])
-    //     }
-    // }
-
-    // ejecutarConRetraso();
-
 }
-
 function turnOnOf(p, q) {
     if (q.classList.contains('esq1')) {
         q.classList[p]("hoverRed")
@@ -151,17 +105,33 @@ function turnOnOf(p, q) {
 function esperar(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
-
-async function ejecutarConRetraso() {
+async function turnLights() {
     for (let i = 0; i < queue.length; i++) {
         let time = setTimeout(turnOnOf, 400, 'add', queue[i]);
         setTimeout(turnOnOf, 700, 'remove', queue[i])
         // console.log(`Iteración ${i}`);
+        container.classList.add('cover')
+
         await esperar(1000); // espera 1 segundo antes de la siguiente
     }
-
-    // console.log("¡Bucle terminado!");
+    // console.log("Tu turno");
+    container.classList.remove('cover')
 }
-
-
-
+function showGameOverbtn() {
+    container.classList.add('cover')
+    msgGameOver.classList.add('unhide')
+    msgGameOver.addEventListener('click', () => {
+        msgGameOver.classList.remove('unhide')
+        msgGameOver.classList.add('hide')
+        startButton.classList.remove('hide')
+        startButton.classList.add('unhide')
+        roundContainer.classList.remove('unhide')
+        roundContainer.classList.add('hide')
+        startButton.style.zIndex = '200'
+        // debugger;
+        rounds = 1
+        roundsNumber.innerText = 1
+    })
+    queue = []
+    selectable = []
+}
