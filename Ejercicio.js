@@ -11,7 +11,7 @@ let container = document.querySelector('.container')
 let queue = [];
 let selectable = [];
 let allColor = [red, yellow, blue, green]
-let time;
+// let time;
 let ran;
 let rounds = 1;
 let o = 0;
@@ -34,23 +34,12 @@ startButton.addEventListener('click', () => {
     queue.push(ran)
     // console.log(ran)
 
-    time = setTimeout(turnOnOf, 400, 'add', ran);
+    // time = setTimeout(turnOnOf, 400, 'add', ran);
+    setTimeout(turnOnOf, 400, 'add', ran);
+
 
     setTimeout(turnOnOf, 700, 'remove', ran)
     console.log(queue)
-
-    red.addEventListener('click', () => {
-        myfuntion(red);
-    })
-    yellow.addEventListener('click', () => {
-        myfuntion(yellow);
-    })
-    blue.addEventListener('click', () => {
-        myfuntion(blue);
-    })
-    green.addEventListener('click', () => {
-        myfuntion(green);
-    })
 })
 
 function myfuntion(pressedColor) {
@@ -59,7 +48,7 @@ function myfuntion(pressedColor) {
     console.log(queue)
     selectable.push(pressedColor)
     console.log(selectable)
-    debugger;
+    // debugger;
     // for (let i in queue) {
     if (selectable[o].classList[1] == queue[o].classList[1]) {
         if (selectable.length == queue.length) {
@@ -83,6 +72,7 @@ function myfuntion(pressedColor) {
         }
     } else {
         console.log('La secuecia no es igual, perdiste')
+        cleanArrays()
         showGameOverbtn()
     }
     // }
@@ -107,7 +97,9 @@ function esperar(ms) {
 }
 async function turnLights() {
     for (let i = 0; i < queue.length; i++) {
-        let time = setTimeout(turnOnOf, 400, 'add', queue[i]);
+        // let time = setTimeout(turnOnOf, 400, 'add', queue[i]);
+        // debugger;
+        setTimeout(turnOnOf, 400, 'add', queue[i]);
         setTimeout(turnOnOf, 700, 'remove', queue[i])
         // console.log(`Iteración ${i}`);
         container.classList.add('cover')
@@ -132,6 +124,23 @@ function showGameOverbtn() {
         rounds = 1
         roundsNumber.innerText = 1
     })
+    // queue = []
+    // selectable = []
+}
+function cleanArrays() {
     queue = []
     selectable = []
 }
+
+red.addEventListener('click', () => {
+    myfuntion(red);
+})
+yellow.addEventListener('click', () => {
+    myfuntion(yellow);
+})
+blue.addEventListener('click', () => {
+    myfuntion(blue);
+})
+green.addEventListener('click', () => {
+    myfuntion(green);
+})
