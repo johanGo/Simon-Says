@@ -143,4 +143,5 @@ blue.addEventListener('click', () => {
 })
 green.addEventListener('click', () => {
     myfuntion(green);
+    
 })

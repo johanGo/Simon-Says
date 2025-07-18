@@ -8,12 +8,14 @@
 .container {
     width: 600px;
     height: 600px;
-    border: 5px solid;
+    border: 20px solid;
     border-radius: 20px;
     margin: 50px auto;
     position: relative;
     display: grid;
     grid-template-columns: 1fr 1fr;
+    border-radius: 100%;
+    overflow: hidden;
     /* z-index: 10; */
 }
 
@@ -25,40 +27,48 @@
   width: 100%;
   height: 100%;
   border-radius: 20px; /* Igual que el .container para que coincida */
-  background-color: rgba(0, 0, 0, .4); /* Cambia este color u opacidad según lo que quieras */
+  background-color: rgba(0, 0, 0, .3); /* Cambia este color u opacidad según lo que quieras */
   z-index: 100;
   pointer-events: auto; /* Opcional: evita que bloquee clics si es solo decorativo */
 }
 
 .esq {
-    width: 200px;
-    height: 200px;
-    background-color: blue;
-    margin: 30px auto;
-    border: 5px solid;
-    border-radius: 100%;
+    width: 100%;
+    height: 100%;
+    /* background-color: blue; */
+    /* margin: 30px auto; */
+    border: 10px solid;
+    /* border-radius: 100%; */
     cursor: pointer;
 }
 
 .esq1 {
-    background-color: red;
+    background-color: rgb(167, 0, 0);
+    border-top: 0;
+    border-left: 0;
 }
 
 .esq2 {
-    background-color: yellow;
+    background-color: rgb(218, 207, 64);
+    border-right: 0;
+    border-top: 0;
 }
 
 .esq3 {
-    background-color: blue;
+    background-color: rgb(0, 0, 145);
+    border-left: 0;
+    border-bottom: 0;
 }
 
 .esq4 {
-    background-color: green;
+    background-color: rgb(0, 134, 0);
+    border-right: 0;
+    border-bottom: 0;
 }
 .start {
     position: absolute;
-    width: 150px;
-    height: 50px;
+    width: 200px;
+    height: 200px;
     background-color: black;
     color: white;
     top: 50%;
@@ -68,16 +78,16 @@
     display: none;
     align-items: center;
     justify-content: center;
-    border-radius: 15px;
-    font-size: 20px;
+    border-radius: 100%;
+    font-size: 30px;
     cursor: pointer;
     user-select: none;
     /* z-index: 200; */
 }
 .roundContainer{
     position: absolute;
-    width: 100px;
-    height: 100px;
+    width: 200px;
+    height: 200px;
     background-color: black;
     color: white;
     top: 50%;
@@ -91,6 +101,7 @@
     border-radius: 50%;
     cursor: pointer;
     user-select: none;
+    font-size: 30px;
 }
 .roundsNumber{
     font-size:40px;
@@ -107,19 +118,23 @@
 }
 
 .hoverRed {
-    box-shadow: 0px 0px 20px 14px red;
+    /* box-shadow: 0px 0px 20px 14px red; */
+    background-color: rgb(255, 61, 61);
 }
 
 .hoverYellow {
-    box-shadow: 0px 0px 20px 14px yellow;
+    /* box-shadow: 0px 0px 20px 14px yellow; */
+    background-color: rgb(255, 238, 0);
 }
 
 .hoverBlue {
-    box-shadow: 0px 0px 20px 14px blue;
+    /* box-shadow: 0px 0px 20px 14px blue; */
+    background-color: blue;
 }
 
 .hoverGreen {
-    box-shadow: 0px 0px 20px 14px green;
+    /* box-shadow: 0px 0px 20px 14px green; */
+    background-color: rgb(0, 255, 0);
 }
 /** styles game over options**/
 
@@ -142,8 +157,6 @@
     cursor: pointer;
     user-select: none;
 }
-
-
 
  /* .tooltip::after {
   content: attr(suu);
