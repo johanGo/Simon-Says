@@ -27,7 +27,7 @@
   width: 100%;
   height: 100%;
   border-radius: 20px; /* Igual que el .container para que coincida */
-  background-color: rgba(0, 0, 0, .3); /* Cambia este color u opacidad según lo que quieras */
+  background-color: rgba(0, 0, 0, .4); /* Cambia este color u opacidad según lo que quieras */
   z-index: 100;
   pointer-events: auto; /* Opcional: evita que bloquee clics si es solo decorativo */
 }
@@ -38,30 +38,30 @@
     /* background-color: blue; */
     /* margin: 30px auto; */
     border: 10px solid;
-    /* border-radius: 100%; */
+    /* border-radius: 100%; */ 
     cursor: pointer;
 }
 
 .esq1 {
-    background-color: rgb(167, 0, 0);
+    background-color: rgb(255, 0, 0);
     border-top: 0;
     border-left: 0;
 }
 
 .esq2 {
-    background-color: rgb(218, 207, 64);
+    background-color: rgb(229, 214, 0);
     border-right: 0;
     border-top: 0;
 }
 
 .esq3 {
-    background-color: rgb(0, 0, 145);
+    background-color: rgb(0, 0, 216);
     border-left: 0;
     border-bottom: 0;
 }
 
 .esq4 {
-    background-color: rgb(0, 134, 0);
+    background-color: rgb(0, 174, 0);
     border-right: 0;
     border-bottom: 0;
 }
@@ -82,7 +82,7 @@
     font-size: 30px;
     cursor: pointer;
     user-select: none;
-    /* z-index: 200; */
+    z-index: 200;
 }
 .roundContainer{
     position: absolute;
@@ -102,6 +102,7 @@
     cursor: pointer;
     user-select: none;
     font-size: 30px;
+    z-index: 400;
 }
 .roundsNumber{
     font-size:40px;
@@ -124,7 +125,7 @@
 
 .hoverYellow {
     /* box-shadow: 0px 0px 20px 14px yellow; */
-    background-color: rgb(255, 238, 0);
+    background-color: #ffff01;
 }
 
 .hoverBlue {
